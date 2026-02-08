@@ -52,12 +52,14 @@ const Directory = () => {
         navigator.geolocation.getCurrentPosition(async (position) => {
             const { latitude, longitude } = position.coords
             try {
-                // Free reverse geocoding to get City name
-                const res = await fetch(`https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`)
+                // OpenStreetMap Nominatim API (Free & High Precision)
+                const res = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${latitude}&lon=${longitude}`)
                 const data = await res.json()
-                // Prioritize locality (village/town) over city (district) for better precision
-                const city = data.locality || data.city || data.principalSubdivision || "Unknown Location"
-                const country = data.countryName || ""
+
+                // Extract precise location (Village > Town > City > Suburb)
+                const address = data.address || {}
+                const city = address.village || address.town || address.city || address.suburb || address.county || "Unknown Location"
+                const country = address.country || ""
                 const fullLocation = `${city}, ${country}`
 
                 handleSearch(fullLocation)
