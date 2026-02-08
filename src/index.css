@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #e8f1ed;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #829a92;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d6a4f;
+}
+
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-dark {
+  background: rgba(26, 77, 46, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body {
+  background-color: #fafdf9;
+  color: #2b3a2f;
+  font-family: 'Inter Variable', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(82, 183, 136, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(212, 163, 115, 0.15) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(82, 183, 136, 0.15) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(212, 163, 115, 0.15) 0px, transparent 50%);
+  background-attachment: fixed;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: 'Cabinet Grotesk', sans-serif;
+  font-weight: 700;
+}
